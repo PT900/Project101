@@ -15,15 +15,19 @@ int main() {
 		case '+':
 			printf("Output = %d", a + b);
 			break;
+
 		case '-':
 			printf("Output = %d", a - b);
 			break;
+
 		case '*':
 			printf("Output = %d", a * b);
 			break;
+
 		case '/':
 			printf("Output = %.2f", (float)a / (float)b);
 			break;
+			
 		default:
 			printf("Operator doesn't match with +, -, *, /");
 	}
