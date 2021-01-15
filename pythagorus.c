@@ -2,12 +2,10 @@
 #include <math.h>
 
 int main() {
-        float a, b, c;
+        double a, b;
 
-        scanf("%f %f", &a, &b);
-        c = sqrt(pow(a, 2) + pow(b, 2));
-
-        printf("%.6f", c);
+        scanf("%lf %lf", &a, &b);
+        printf("%.6lf", sqrt((a * a) + (b * b)));
 
         return 0;
 }
