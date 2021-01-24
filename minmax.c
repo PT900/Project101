@@ -13,7 +13,6 @@ int main() {
                 if (b[i] > MAX) {
                         MAX = b[i];
                 }
-
                 if (b[i] < MIN) {
                         MIN = b[i];
                 }
