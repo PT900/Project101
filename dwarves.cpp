@@ -8,7 +8,7 @@ int main() {
                 cin >> first[i];
                 temp += first[i];
         }
-        
+
         for (int i = 0; i < 9; i++) {
                 for (int j = 0; j < 9; j++) {
                         if (temp - first[i] - first[j] == 100 && first[i] != first[j]) {
