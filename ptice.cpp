@@ -2,14 +2,6 @@
 #include <string>
 using namespace std;
 
-// string operator * (string a, unsigned int b) {
-//     string output = "";
-//     while (b--) {
-//         output += a;
-//     }
-//     return output;
-// }
-
 void printRes(int a, int b, int c) {
     int maxNum = max(a, max(b, c));
 
@@ -24,12 +16,6 @@ int main () {
     string prob;
     cin >> n >> prob;
     string A = "ABC", B = "BABC", C = "CCAABB";
-    // A = A * n;
-    // B = B * n;
-    // C = C * n;
-    // A.resize(n);
-    // B.resize(n);
-    // C.resize(n);
 
     int i = 0;
     while (i < prob.length()) {
