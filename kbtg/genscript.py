@@ -1,37 +1,43 @@
 import json
+import sys
 
-def create_json_req_file():
-    print("Please enter JSON request:")
-    json_input = input()
+def save_to_file(file_name, content):
+    with open(file_name, 'w') as file:
+        file.write(content)
 
+def edit_request_with_input(url, json_input, headers):
+    request_string = ('web_rest("POST: my_url",\n'
+                        '\t"URL=my_url",\n'
+                        '\t"Method=POST",\n'
+                        '\t"EncType=raw",\n'
+                        '\t"Snapshot=t1.inf",\n'
+                        f'\t"Body={json_input}\n\tHEADERS,",\n'
+                        f'\t{headers});')
+
+    updated_request_string = request_string.replace("my_url", url)
+
+    return updated_request_string
+
+if __name__ == "__main__":
+    # Sample input URL, JSON request, and headers
+    input_url = input("Input request url: ")
+    input_json = input("Input request JSON: ")
+
+    # Format the JSON input with proper indentation
     try:
-        json_data = json.loads(json_input)
-        file_name = "test2.txt"
+        paresd_json = json.loads(input_json)
+        formatted_json = json.dumps(paresd_json, indent=4, separators=(',', ': '))
+    except json.JSONDecodeError:
+        print("Error: Invalid JSON format. Please provide valid JSON input.")
+    else:
+        input_headers = '''"Name=Content-Type", "Value=application/json", ENDHEADER,\n\tLAST);'''
 
-        with open(file_name, 'w') as file:
-            json.dump(json_data, file, indent=2)
+        updated_request_string = edit_request_with_input(input_url, input_json, input_headers)
 
-        print(f"JSON request text file has been saved to '{file_name}'.")
-    except:
-        print(f"Error: Invalid JSON format. Please enter a valid JSON request.")
+        if updated_request_string:
+            # print("Updated Request String:")
+            # print(updated_request_string)
 
-if __name__ == '__main__':
-    create_json_req_file()
-
-# Old version
-
-# def create_text_file(file_name, content):
-#     try:
-#         with open(file_name, 'w') as file:
-#             file.write(content)
-#         print(f"Text file '{file_name}' has been created successfully.")
-#     except IOError:
-#         print(f"Error: Unable to create the text file '{file_name}'.")
-
-# if __name__ == '__main__':
-    # file_name = "test2.txt"
-    # content = """This is an example of text file created by python.
-    # It contains multiple lines of text.
-    # You can add any content you like."""
-    # create_text_file(file_name, content)
+            save_to_file("output.txt", updated_request_string)
+            print("Request has been saved to 'output.txt'.")
 

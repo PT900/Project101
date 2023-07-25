@@ -1,5 +1,5 @@
 {
-  "username": "my_username",
+  "username": "TestNewParam",
   "password": "my_password",
   "validation-factors": {
     "validationFactors": [
