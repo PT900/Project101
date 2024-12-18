@@ -1,8 +1,7 @@
 #include <iostream>
-using namespace std;
 
 int main() {
-  cout << "Hello world!";
+  std::cout << ("Currency\n");
 
   return 0;
 }
